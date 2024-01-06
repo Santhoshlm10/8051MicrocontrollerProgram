@@ -1,0 +1,10 @@
+Follow the steps given below to burn the program to the chip
+
+1.Create a main.c file and write your program.(with your program)
+2.sdcc -mmcs51 --model-small --iram-size 128 --xram-size 0 --code-size 2048 main.c
+  "Compile with the above command"
+3.objcopy -I ihex -O ihex main.ihx main.hex
+  "Get the hex from the above command"
+4.sudo avrdude -p AT89S52 -c usbasp -P /dev/ttyUSB1 -U flash:w:main.hex:i
+  "The above code burns the program to the chip"
+  
